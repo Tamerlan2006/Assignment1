@@ -1,5 +1,3 @@
-
-
 public class Main {
     public static void main(String[] args) {
 
@@ -24,7 +22,7 @@ public class Main {
         gallery1.displayGallery();
         gallery2.displayGallery();
 
-        System.out.println("\nComparison:");
+        System.out.println("\nComparison:"); //price comparison
         if (art1.getPrice() > art2.getPrice()) {
             System.out.println(art1.getTitle() + " is more expensive than " + art2.getTitle());
         } else {
