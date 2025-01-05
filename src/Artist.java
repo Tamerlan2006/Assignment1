@@ -1,12 +1,14 @@
-public class Artist {
-    private String name;
-    private int age;
-    private String style;
+import java.util.Objects;
 
-    public Artist(String name, int age, String style) {
+class Artist {
+    private String name;
+    private String country;
+    private int birthYear;
+
+    public Artist(String name, String country, int birthYear) {
         this.name = name;
-        this.age = age;
-        this.style = style;
+        this.country = country;
+        this.birthYear = birthYear;
     }
 
     public String getName() {
@@ -17,23 +19,43 @@ public class Artist {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getCountry() {
+        return country;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    public String getStyle() {
-        return style;
+    public int getBirthYear() {
+        return birthYear;
     }
 
-    public void setStyle(String style) {
-        this.style = style;
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
     }
 
-    public void displayArtist() {
-        System.out.println("Artist Name: " + name + ", Age: " + age + ", Style: " + style);
+    @Override
+    public String toString() {
+        return "Artist{" +
+                "name='" + name + '\'' +
+                ", country='" + country + '\'' +
+                ", birthYear=" + birthYear +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artist artist = (Artist) o;
+        return birthYear == artist.birthYear &&
+                Objects.equals(name, artist.name) &&
+                Objects.equals(country, artist.country);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, country, birthYear);
     }
 }

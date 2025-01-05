@@ -1,11 +1,11 @@
-public class Artwork {
+abstract class Artwork {
     private String title;
-    private String artistName;
+    private Artist artist;
     private double price;
 
-    public Artwork(String title, String artistName, double price) {
+    public Artwork(String title, Artist artist, double price) {
         this.title = title;
-        this.artistName = artistName;
+        this.artist = artist;
         this.price = price;
     }
 
@@ -17,12 +17,12 @@ public class Artwork {
         this.title = title;
     }
 
-    public String getArtistName() {
-        return artistName;
+    public Artist getArtist() {
+        return artist;
     }
 
-    public void setArtistName(String artistName) {
-        this.artistName = artistName;
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
 
     public double getPrice() {
@@ -33,9 +33,14 @@ public class Artwork {
         this.price = price;
     }
 
-    public void displayArtwork() {
-        System.out.println("Artwork Title: " + title + ", Artist: " + artistName + ", Price: $" + price);
+    @Override
+    public String toString() {
+        return "Artwork{" +
+                "title='" + title + '\'' +
+                ", artist=" + artist +
+                ", price=" + price +
+                '}';
     }
+
+    public abstract void displayDetails();
 }
-
-

@@ -1,32 +1,25 @@
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
+        Artist artist1 = new Artist("Vincent van Gogh", "Netherlands", 1853);
+        Artist artist2 = new Artist("Auguste Rodin", "France", 1840);
 
-        Artwork art1 = new Artwork("Starry Night", "Vincent van Gogh", 1000000.00);
-        Artwork art2 = new Artwork("Mona Lisa", "Leonardo da Vinci", 5000000.00);
+        Painting painting1 = new Painting("Starry Night", artist1, 1000000.00, "Oil");
+        Painting painting2 = new Painting("Sunflowers", artist1, 800000.00, "Oil");
+        Sculpture sculpture1 = new Sculpture("The Thinker", artist2, 1500000.00, 500.0);
 
-        Artist artist1 = new Artist("Vincent van Gogh", 37, "Post-Impressionism");
-        Artist artist2 = new Artist("Leonardo da Vinci", 67, "Renaissance");
+        Gallery gallery = new Gallery("Modern Art Gallery", "Paris");
+        gallery.addArtwork(painting1);
+        gallery.addArtwork(painting2);
+        gallery.addArtwork(sculpture1);
 
-        Gallery gallery1 = new Gallery("Louvre", "Paris", 5000);
-        Gallery gallery2 = new Gallery("Van Gogh Museum", "Amsterdam", 2000);
+        gallery.displayArtworks();
 
-        System.out.println("Artworks:");
-        art1.displayArtwork();
-        art2.displayArtwork();
-
-        System.out.println("\nArtists:");
-        artist1.displayArtist();
-        artist2.displayArtist();
-
-        System.out.println("\nGalleries:");
-        gallery1.displayGallery();
-        gallery2.displayGallery();
-
-        System.out.println("\nComparison:"); //price comparison
-        if (art1.getPrice() > art2.getPrice()) {
-            System.out.println(art1.getTitle() + " is more expensive than " + art2.getTitle());
-        } else {
-            System.out.println(art2.getTitle() + " is more expensive than " + art1.getTitle());
+        System.out.println("\nArtworks priced between $800,000 and $1,500,000:");
+        List<Artwork> filteredArtworks = gallery.filterArtworksByPrice(800000, 1500000);
+        for (Artwork artwork : filteredArtworks) {
+            System.out.println(artwork);
         }
     }
 }

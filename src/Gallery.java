@@ -1,12 +1,15 @@
-public class Gallery {
+import java.util.ArrayList;
+import java.util.List;
+
+class Gallery {
     private String name;
     private String location;
-    private int capacity;
+    private List<Artwork> artworks;
 
-    public Gallery(String name, String location, int capacity) {
+    public Gallery(String name, String location) {
         this.name = name;
         this.location = location;
-        this.capacity = capacity;
+        this.artworks = new ArrayList<>();
     }
 
     public String getName() {
@@ -25,15 +28,24 @@ public class Gallery {
         this.location = location;
     }
 
-    public int getCapacity() {
-        return capacity;
+    public void addArtwork(Artwork artwork) {
+        artworks.add(artwork);
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public void displayArtworks() {
+        System.out.println("Gallery: " + name + ", Location: " + location);
+        for (Artwork artwork : artworks) {
+            artwork.displayDetails();
+        }
     }
 
-    public void displayGallery() {
-        System.out.println("Gallery Name: " + name + ", Location: " + location + ", Capacity: " + capacity);
+    public List<Artwork> filterArtworksByPrice(double minPrice, double maxPrice) {
+        List<Artwork> filtered = new ArrayList<>();
+        for (Artwork artwork : artworks) {
+            if (artwork.getPrice() >= minPrice && artwork.getPrice() <= maxPrice) {
+                filtered.add(artwork);
+            }
+        }
+        return filtered;
     }
 }
