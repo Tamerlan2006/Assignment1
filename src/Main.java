@@ -1,6 +1,7 @@
 import java.util.List;
 
 public class Main {
+
     public static void main(String[] args) {
         Artist artist1 = new Artist("Vincent van Gogh", "Netherlands", 1853);
         Artist artist2 = new Artist("Auguste Rodin", "France", 1840);
@@ -21,5 +22,13 @@ public class Main {
         for (Artwork artwork : filteredArtworks) {
             System.out.println(artwork);
         }
+
+        System.out.println("\nSorted Artworks by Price:");
+        gallery.sortArtworksByPrice();
+        gallery.displayArtworks();
+
+        System.out.println("\nSearch for 'Sunflowers':");
+        Artwork foundArtwork = gallery.searchArtworkByTitle("Sunflowers");
+        System.out.println(foundArtwork != null ? foundArtwork : "Artwork not found.");
     }
 }

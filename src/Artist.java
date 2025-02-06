@@ -6,6 +6,9 @@ class Artist {
     private int birthYear;
 
     public Artist(String name, String country, int birthYear) {
+        if (name == null || country == null || birthYear <= 0) {
+            throw new IllegalArgumentException("Invalid input for Artist fields.");
+        }
         this.name = name;
         this.country = country;
         this.birthYear = birthYear;
@@ -13,26 +16,6 @@ class Artist {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public int getBirthYear() {
-        return birthYear;
-    }
-
-    public void setBirthYear(int birthYear) {
-        this.birthYear = birthYear;
     }
 
     @Override

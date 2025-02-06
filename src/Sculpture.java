@@ -1,17 +1,16 @@
 class Sculpture extends Artwork {
-    private double weight; // Вес скульптуры
+    private double weight;
 
     public Sculpture(String title, Artist artist, double price, double weight) {
         super(title, artist, price);
+        if (weight <= 0) {
+            throw new IllegalArgumentException("Weight must be greater than zero.");
+        }
         this.weight = weight;
     }
 
     public double getWeight() {
         return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
     }
 
     @Override
